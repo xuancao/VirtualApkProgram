@@ -53,7 +53,17 @@ public class PluginHelper {
      * @return
      */
     public static String getPluginName(int pluginId){
-        return  PluginConstant.PLUGIN_NAME_FRONT + pluginId + PluginConstant.PLUGIN_NAME_BEHIND;
+        String pluginName = "";
+        switch (pluginId){
+            //装车
+            case PluginConstant.PLUGIN_ID_NATIVE:
+                pluginName = PluginConstant.PLUGIN_NAME_NATIVE;
+                break;
+            case PluginConstant.PLUGIN_ID_REMOTE:
+                pluginName = PluginConstant.PLUGIN_NAME_REMOTE;
+                break;
+        }
+        return pluginName;
     }
 
     /**

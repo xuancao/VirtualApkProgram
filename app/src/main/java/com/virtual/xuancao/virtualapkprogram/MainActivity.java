@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.virtual.xuancao.virtualapkprogram.Utils.AssetsFileUtils;
+import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
 import com.virtual.xuancao.virtualapkprogram.Utils.PermissionUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             PermissionUtils.requestPermission(this);
         }
+
+
+        AssetsFileUtils.assertCopyPlugin("plugin", FileUtils.getPluginCacheDir().getPath());
+
+
     }
 
     @Override

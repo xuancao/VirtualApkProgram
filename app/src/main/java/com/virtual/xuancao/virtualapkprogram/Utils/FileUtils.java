@@ -5,8 +5,14 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.virtual.xuancao.virtualapkprogram.MyApp;
+import com.virtual.xuancao.virtualapkprogram.R;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class FileUtils {
 
@@ -27,8 +33,8 @@ public class FileUtils {
     /**
      * 插件下载临时文件
      */
-    public static File getDownloadApkFile(int pluginID) {
-        File file = new File(getPluginCacheDir(), "pluginId-" + pluginID +"-release.apk");
+    public static File getDownloadApkFile(String pluginName) {
+        File file = new File(getPluginCacheDir(), pluginName);
         return file;
     }
 

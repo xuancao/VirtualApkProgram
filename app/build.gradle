@@ -16,7 +16,7 @@ android {
         key {
             keyAlias 'xuancao'
             keyPassword '123456'
-            storeFile file('keystore.jks')
+            storeFile file('../keystore.jks')
             storePassword '123456'
             v2SigningEnabled false
         }
