@@ -1,5 +1,6 @@
 滴滴插件化接入样例。
 virtualapk对编译环境有很大的限制，我宿主项目和插件项目中使用的编译环境是：'com.android.tools.build:gradle:2.3.3'
+
 一、插件集成
 
 1、项目的build.gradle添加依赖
