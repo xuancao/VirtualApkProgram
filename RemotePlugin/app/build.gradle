@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.didi.virtualapk.plugin'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        applicationId "com.remote_plugin.xuancao.remoteplugin"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        key {
+            keyAlias 'xuancao'
+            keyPassword '123456'
+            storeFile file('../../keystore.jks')
+            storePassword '123456'
+            v2SigningEnabled false
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.key
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    implementation 'com.didi.virtualapk:core:0.9.6'
+}
+
+virtualApk {
+    // 范围 0x02 - 0x7E
+    packageId = 0x7E             // The package id of Resources.
+    targetHost='../../VirtualApkProgram/app' // The path of application module in host project.
+    applyHostMapping = true      // [Optional] Default value is true.
+}
