@@ -15,3 +15,6 @@ com.android.support:support-core-utils:27.1.1 160
 com.android.support:support-fragment:27.1.1 160
 com.android.support:support-vector-drawable:27.1.1 160
 com.didi.virtualapk:core:0.9.6 224
+com.google.code.gson:gson:2.8.1 232620
+com.squareup.okhttp3:okhttp:3.4.1 344481
+com.squareup.okio:okio:1.9.0 76036

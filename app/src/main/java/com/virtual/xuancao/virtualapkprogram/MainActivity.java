@@ -35,19 +35,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        AssetsFileUtils.assertCopyPlugin("plugin", FileUtils.getPluginCacheDir().getPath());
+
         if (PermissionUtils.hasPermission()) {
             Log.d(TAG,"loadPlugin");
             PluginHelper.loadPlugin(this,PluginConstant.PLUGIN_ID_NATIVE);
+            PluginHelper.loadPlugin(this,PluginConstant.PLUGIN_ID_REMOTE);
         } else {
             PermissionUtils.requestPermission(this);
         }
 
 
-        AssetsFileUtils.assertCopyPlugin("plugin", FileUtils.getPluginCacheDir().getPath());
 
-        if (NetWorkUtil.isWifi(this)) {
-            downPlugin("ddddddddddddddddddddddddddd");
-        }
+//        if (NetWorkUtil.isWifi(this)) {
+//            downPlugin("ddddddddddddddddddddddddddd");
+//        }
     }
 
     @Override
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 PermissionUtils.requestPermission(this);
             } else {
                 PluginHelper.loadPlugin(this,PluginConstant.PLUGIN_ID_NATIVE);
+                PluginHelper.loadPlugin(this,PluginConstant.PLUGIN_ID_REMOTE);
             }
             return;
         }
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         //定义一个布尔值 用来控制接收app和模块之间的跳转流程
         boolean isStart = PluginHelper.startActivity(this,
                 PluginConstant.PLUGIN_ID_REMOTE,
-                PluginConstant.PLUGIN_NAME_REMOTE,
+                PluginConstant.PLUGIN_PACKAGE_REMOTE,
                 "com.remote_plugin.xuancao.remoteplugin.RemoteActivity");
         if (!isStart) {
             Toast.makeText(this, "服务器下载的插件功能模块已损坏", Toast.LENGTH_SHORT).show();
