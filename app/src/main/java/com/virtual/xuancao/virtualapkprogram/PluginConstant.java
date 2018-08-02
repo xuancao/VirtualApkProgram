@@ -23,4 +23,6 @@ public class PluginConstant {
     public static String PLUGIN_PACKAGE_REMOTE = "com.remote_plugin.xuancao.remoteplugin";
     //定义插件的名称
     public static String PLUGIN_NAME_REMOTE = "com.remote_plugin.xuancao.remoteplugin.apk";
+
+
 }
