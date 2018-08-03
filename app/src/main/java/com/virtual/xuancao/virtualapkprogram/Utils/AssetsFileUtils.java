@@ -9,25 +9,29 @@ import java.io.InputStream;
 
 public class AssetsFileUtils {
 
-    public static void assertCopyPlugin(String pluginDirPath,String targetDirFullPath){
-        try {
-            String[] listFiles = MyApp.getmContext().getAssets().list(pluginDirPath);
-            for (String string : listFiles) {
-                File file = new File(targetDirFullPath + File.separator + string);
-                if (string.endsWith(".apk") && (!file.exists())) {    // 从assets目录下拷贝文件
-                    InputStream assestsFileImputStream;
-                    try {
-                        assestsFileImputStream = MyApp.getmContext().getAssets().open(pluginDirPath + File.separator + string);
-                        copyFile(assestsFileImputStream, targetDirFullPath + File.separator + string);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+    public static void assertCopyPlugin(final String pluginDirPath, final String targetDirFullPath){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String[] listFiles = MyApp.getmContext().getAssets().list(pluginDirPath);
+                    for (String string : listFiles) {
+                        File file = new File(targetDirFullPath + File.separator + string);
+                        if (string.endsWith(".apk") && (!file.exists())) {    // 从assets目录下拷贝文件
+                            InputStream assestsFileImputStream;
+                            try {
+                                assestsFileImputStream = MyApp.getmContext().getAssets().open(pluginDirPath + File.separator + string);
+                                copyFile(assestsFileImputStream, targetDirFullPath + File.separator + string);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        }).start();
     }
 
     private static void copyFile(InputStream in, String targetPath) {

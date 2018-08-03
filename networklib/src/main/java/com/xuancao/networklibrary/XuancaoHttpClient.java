@@ -1,4 +1,4 @@
-package com.virtual.xuancao.virtualapkprogram.network;
+package com.xuancao.networklibrary;
 
 import android.os.Build;
 import android.webkit.WebSettings;
@@ -27,7 +27,7 @@ import okhttp3.Response;
  * Created by xuancao on 2017/7/04.
  */
 
-public class XchuangHttpClient {
+public class XuancaoHttpClient {
 
     public static String TAG = "XchuangHttpClient";
     private static OkHttpClient httpClient;
@@ -163,5 +163,6 @@ public class XchuangHttpClient {
         }
         return sb.toString();
     }
+
 
 }

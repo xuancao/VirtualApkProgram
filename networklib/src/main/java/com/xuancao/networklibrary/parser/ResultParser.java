@@ -1,4 +1,4 @@
-package com.virtual.xuancao.virtualapkprogram.network.parser;
+package com.xuancao.networklibrary.parser;
 
 import org.json.JSONException;
 import org.json.JSONObject;

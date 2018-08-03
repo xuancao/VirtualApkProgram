@@ -1,4 +1,4 @@
-package com.virtual.xuancao.virtualapkprogram.network;
+package com.xuancao.networklibrary;
 
 public interface ServerCode {
     int CODE_200 = 200;//一切正常

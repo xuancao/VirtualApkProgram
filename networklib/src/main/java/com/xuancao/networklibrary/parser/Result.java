@@ -1,4 +1,4 @@
-package com.virtual.xuancao.virtualapkprogram.network.parser;
+package com.xuancao.networklibrary.parser;
 
 public class Result {
     private int code; // 响应码

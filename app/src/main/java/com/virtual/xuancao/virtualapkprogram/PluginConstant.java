@@ -5,10 +5,6 @@ package com.virtual.xuancao.virtualapkprogram;
  */
 public class PluginConstant {
 
-//    //定义插件的名称 "pluginId-" + PLUGIN_ID_REMOTE + "-release.apk" eg:"pluginId-1-release.apk"
-//    public static final String PLUGIN_NAME_FRONT = "pluginId-";
-//    public static final String PLUGIN_NAME_BEHIND ="-release.apk";
-
     //定义插件的id
     public static final int PLUGIN_ID_NATIVE = 1;
     //定义插件的包名

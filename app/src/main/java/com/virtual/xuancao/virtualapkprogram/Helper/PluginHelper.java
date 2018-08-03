@@ -1,9 +1,10 @@
-package com.virtual.xuancao.virtualapkprogram;
+package com.virtual.xuancao.virtualapkprogram.Helper;
 
 import android.content.Context;
 import android.content.Intent;
 
 import com.didi.virtualapk.PluginManager;
+import com.virtual.xuancao.virtualapkprogram.PluginConstant;
 import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
 import com.virtual.xuancao.virtualapkprogram.Utils.LogUtil;
 

@@ -4,6 +4,11 @@ import android.app.Application;
 import android.content.Context;
 
 import com.didi.virtualapk.PluginManager;
+import com.virtual.xuancao.virtualapkprogram.Helper.DownPluginHelper;
+import com.virtual.xuancao.virtualapkprogram.Utils.AssetsFileUtils;
+import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
+import com.virtual.xuancao.virtualapkprogram.Utils.NetWorkUtil;
+import com.xuancao.networklibrary.Func;
 
 public class MyApp extends Application {
 
@@ -13,6 +18,14 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
+
+//        /** 从服务器下载插件到指定目录 */
+//        if (NetWorkUtil.isWifi(this)) {
+//            DownPluginHelper.downPlugin(Func.DOWN_LOAD_PLUGIN_URL);
+//        }
+        /**  将assets中插件拷贝到指定目录 */
+        AssetsFileUtils.assertCopyPlugin("plugin", FileUtils.getPluginCacheDir().getPath());
+
 
     }
 

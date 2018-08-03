@@ -1,10 +1,9 @@
-package com.virtual.xuancao.virtualapkprogram.network;
+package com.xuancao.networklibrary;
 
-import android.content.Intent;
 import android.text.TextUtils;
 
 import com.virtual.xuancao.virtualapkprogram.Utils.ToastUtil;
-import com.virtual.xuancao.virtualapkprogram.network.parser.Result;
+import com.xuancao.networklibrary.parser.Result;
 
 /**
  * Desc:成功失败的返回结果

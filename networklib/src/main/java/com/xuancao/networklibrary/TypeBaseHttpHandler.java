@@ -1,11 +1,11 @@
-package com.virtual.xuancao.virtualapkprogram.network;
+package com.xuancao.networklibrary;
 
 import android.os.Handler;
 import android.os.Looper;
 
 import com.virtual.xuancao.virtualapkprogram.Utils.LogUtil;
-import com.virtual.xuancao.virtualapkprogram.network.parser.Result;
-import com.virtual.xuancao.virtualapkprogram.network.parser.ResultParser;
+import com.xuancao.networklibrary.parser.Result;
+import com.xuancao.networklibrary.parser.ResultParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ import okhttp3.Response;
  * Desc:初步解析 判断token
  */
 public abstract class TypeBaseHttpHandler implements Callback {
-    protected static final String TAG = XchuangHttpClient.TAG;
+    protected static final String TAG = XuancaoHttpClient.TAG;
 
     public TypeBaseHttpHandler() {
     }

@@ -1,12 +1,11 @@
-package com.virtual.xuancao.virtualapkprogram.network;
+package com.xuancao.networklibrary;
 
-import android.content.Intent;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.virtual.xuancao.virtualapkprogram.Utils.LogUtil;
 import com.virtual.xuancao.virtualapkprogram.Utils.ToastUtil;
-import com.virtual.xuancao.virtualapkprogram.network.parser.Result;
+import com.xuancao.networklibrary.parser.Result;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
