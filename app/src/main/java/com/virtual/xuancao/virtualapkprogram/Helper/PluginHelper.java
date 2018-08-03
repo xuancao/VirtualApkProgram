@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.didi.virtualapk.PluginManager;
 import com.virtual.xuancao.virtualapkprogram.PluginConstant;
 import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
-import com.virtual.xuancao.virtualapkprogram.Utils.LogUtil;
+import com.xuancao.base.Utils.LogUtil;
 
 import java.io.File;
 

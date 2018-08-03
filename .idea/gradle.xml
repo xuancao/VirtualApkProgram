@@ -8,8 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ap.lib.base" />
+            <option value="$PROJECT_DIR$/ap.lib.network" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/networklib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.virtual.xuancao.virtualapkprogram.Helper.PluginHelper;
 import com.virtual.xuancao.virtualapkprogram.PluginConstant;
 import com.virtual.xuancao.virtualapkprogram.R;
-import com.virtual.xuancao.virtualapkprogram.Utils.PermissionUtils;
+import com.xuancao.base.Utils.PermissionUtils;
 
 public class MainActivity extends AppCompatActivity {
 

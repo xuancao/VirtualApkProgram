@@ -2,10 +2,11 @@ package com.virtual.xuancao.virtualapkprogram.Helper;
 
 import com.virtual.xuancao.virtualapkprogram.PluginConstant;
 import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
-import com.virtual.xuancao.virtualapkprogram.Utils.LogUtil;
-import com.virtual.xuancao.virtualapkprogram.Utils.ToastUtil;
-import com.xuancao.networklibrary.ProgressListener;
-import com.xuancao.networklibrary.XuancaoHttpClient;
+import com.xuancao.base.Utils.LogUtil;
+import com.xuancao.base.Utils.ToastUtil;
+import com.xuancao.network.ProgressListener;
+import com.xuancao.network.XuancaoHttpClient;
+import com.xuancao.network.XuancaoHttpClient;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,6 +16,7 @@ import java.io.InputStream;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+
 
 public class DownPluginHelper {
 

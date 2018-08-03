@@ -5,14 +5,9 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.virtual.xuancao.virtualapkprogram.MyApp;
-import com.virtual.xuancao.virtualapkprogram.R;
+import com.xuancao.base.Utils.LogUtil;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class FileUtils {
 

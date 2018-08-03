@@ -1,1 +1,1 @@
-include ':app', ':networklib'
+include ':app', ':ap.lib.network', ':ap.lib.base'
