@@ -121,6 +121,7 @@ compile 'com.didi.virtualapk:core:0.9.5'
 
 virtualApk {
 
+    //Attention:::packageId 范围 0x02 - 0x7E
     packageId = 0x61             // 插件资源id，避免资源id冲突
 
     targetHost ='app'            // 宿主工程的路径
