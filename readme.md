@@ -105,16 +105,25 @@ apply plugin: 'com.didi.virtualapk.plugin'
 compile 'com.didi.virtualapk:core:0.9.5'
 
 插件信息配置：
+
 virtualApk {
+
     packageId = 0x61             // 插件资源id，避免资源id冲突
+
     targetHost ='app'            // 宿主工程的路径
+
     applyHostMapping = true      // 插件编译时是否启用应用宿主的apply mapping
+
 }
 
 生成插件：
+
 最后一步生成插件，需要使用Gradle命令（在Terminal中执行，或者在醒目目录中执行）
+
 gradle clean assemblePlugin
+
 或者
+
 gradlew clean assemblePlugin
 
 
@@ -126,6 +135,7 @@ gradlew clean assemblePlugin
 
 注意：
 模块的文件名称和路径要和代码中保持一致
+
 /**
  * 通过插件id获取插件文件对象
  * @param context
@@ -144,11 +154,16 @@ public static File getPluginFile(Context context, int pluginId){
 问题记录：
 
 1、Error:This Gradle plugin requires Studio 3.0 minimum
+
 这是由于项目build.gradle依赖了版本：classpath 'com.didi.virtualapk:gradle:0.9.8.3'
+
 解决办法:1、升级androidstudio；2、依赖较低版本的库；3、将以下内容添加到gradle.properties中：android.injected.build.model.only.versioned = 3
 
+
 2、Error:Failed to resolve: com.android.support:support-fragment:27.0.1
+
 在项目的build.gradle使用：
+
 allprojects {
     repositories {
         jcenter()
@@ -157,14 +172,19 @@ allprojects {
 }
 
 3、获取模拟器读写权限，把包导入文件夹
+
 在android sdk的platform-tools路径下，打开控制台，依次输入 adb shell / su，运行前缀变为#，则获取到权限  (android7.0以下)；
 
 4、通过宿主app启动插件，报错：ActivityNotFoundException
+
 原因：Application未在xml中注册，导致sdk的初始化工作没有完成。
 
 5、宿主app启动插件，插件没有启动，而是重新开启了一个宿主Activity。
+
 原因：插件界面的布局名和宿主app的布局名称重复。
+
 解决办法：virtualapk中插件的资源文件名称避免和宿主重复，包括图片、布局、颜色和尺寸资源，否则会直接调用宿主中的资源。
+
 插件如果和宿主同事依赖了相同的包，打包时插件也不会携带该包，直接使用宿主的包文件。
 
 
