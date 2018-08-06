@@ -76,14 +76,17 @@ if (apk.exists()){
 PluginManager pluginManager = PluginManager.getInstance(context.getApplicationContext());
 
 //获取指定包名的插件对象
+
 if (pluginManager.getLoadedPlugin(PackageName) != null){
+
     return true; //已经加载
+
 }
 
 启动模块界面：
 if(isPluginLoaded(activity,pluginId)){ //模块是否加载，pluginId为model中设置的插件id
-    //代表模块加载成功 页面可赢正常跳转功能
 
+    //代表模块加载成功 页面可赢正常跳转功能
     try {
         Intent intent = new Intent();
         intent.setClassName(packageName, className);
@@ -149,7 +152,7 @@ public static File getPluginFile(Context context, int pluginId){
     File file = new File(getExternalStorageDirectory(), pluginApkName);
     Log.e("sun", "getPluginFile: " +  file.getAbsolutePath());
     return file;
-}
+    }
 
 问题记录：
 
