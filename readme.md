@@ -7,6 +7,7 @@ virtualapk对编译环境有很大的限制，我宿主项目和插件项目中�
 一、插件集成
 
 1、项目的build.gradle添加依赖
+
 buildscript {
     repositories {
         jcenter()
@@ -21,29 +22,45 @@ buildscript {
 }
 
 2、宿主app中build.gradle添加依赖
+
 头部添加：
+
 apply plugin: 'com.didi.virtualapk.host'
+
 在dependencies添加：
+
 compile 'com.didi.virtualapk:core:0.9.5'
 
 
 3、在在App的工程模块proguard-rules.pro文件添加混淆规则：
+
 -keep class com.didi.virtualapk.internal.VAInstrumentation { *; }
+
 -keep class com.didi.virtualapk.internal.PluginContentResolver { *; }
 
 -dontwarn com.didi.virtualapk.**
+
 -dontwarn android.**
+
 -keep class android.** { *; }
 
+
 4、初始化
+
 在合适的地方添加：
 PluginManager.getInstance(context).init();
 
+
 5、加载模块
+
 //初始化插件管理器
+
 PluginManager pluginManager = PluginManager.getInstance(context.getApplicationContext());
+
 //获取插件APK的文件对象
+
 File apk = getPluginFile(context, pluginId);
+
 if (apk.exists()){
     try {
         //加载插件
@@ -55,7 +72,9 @@ if (apk.exists()){
 }
 
 检测模块是否已经加载：
+
 PluginManager pluginManager = PluginManager.getInstance(context.getApplicationContext());
+
 //获取指定包名的插件对象
 if (pluginManager.getLoadedPlugin(PackageName) != null){
     return true; //已经加载
