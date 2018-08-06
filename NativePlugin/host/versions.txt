@@ -4,6 +4,8 @@ android.arch.lifecycle:common:1.1.0 20605
 android.arch.lifecycle:livedata-core:1.1.0 160
 android.arch.lifecycle:runtime:1.1.0 192
 android.arch.lifecycle:viewmodel:1.1.0 192
+ap.lib.base:debug:unspecified 0
+ap.lib.network:debug:unspecified 0
 com.android.support.constraint:constraint-layout-solver:1.1.2 109846
 com.android.support.constraint:constraint-layout:1.1.2 192
 com.android.support:animated-vector-drawable:27.1.1 192
@@ -15,3 +17,5 @@ com.android.support:support-core-utils:27.1.1 160
 com.android.support:support-fragment:27.1.1 160
 com.android.support:support-vector-drawable:27.1.1 160
 com.didi.virtualapk:core:0.9.6 224
+com.squareup.okhttp3:okhttp:3.4.1 344481
+com.squareup.okio:okio:1.9.0 76036

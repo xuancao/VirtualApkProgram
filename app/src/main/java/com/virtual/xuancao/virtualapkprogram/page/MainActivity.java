@@ -3,24 +3,22 @@ package com.virtual.xuancao.virtualapkprogram.page;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.virtual.xuancao.virtualapkprogram.Helper.PluginHelper;
-import com.virtual.xuancao.virtualapkprogram.PluginConstant;
+import com.virtual.xuancao.virtualapkprogram.PluginHelper.PluginConstant;
+import com.virtual.xuancao.virtualapkprogram.PluginHelper.PluginHelper;
 import com.virtual.xuancao.virtualapkprogram.R;
+import com.xuancao.base.BaseActivity;
 import com.xuancao.base.Utils.PermissionUtils;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onActivityCreated(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
 
         if (PermissionUtils.hasPermission()) {
@@ -47,11 +45,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void nativePlugin(View view){
+    @Override
+    public void initView() {
+        findViewById(R.id.btnNative).setOnClickListener(this);
+        findViewById(R.id.btnRemote).setOnClickListener(this);
+    }
+
+    @Override
+    public void setListener() {
+
+    }
+
+    @Override
+    public void onClickEvent(View v) {
+        switch (v.getId()){
+            case R.id.btnRemote:
+                remotePlugin();
+                break;
+            case R.id.btnNative:
+                nativePlugin();
+                break;
+        }
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    public void nativePlugin(){
         //定义一个布尔值 用来控制接收app和模块之间的跳转流程
         boolean isStart = PluginHelper.startActivity(this,
                 PluginConstant.PLUGIN_ID_NATIVE,
                 PluginConstant.PLUGIN_PACKAGE_NATIVE,
+                "参数ID",
                 "com.native_plugin.xuancao.nativeplugin.NativeActivity");
         if (!isStart) {
             Toast.makeText(this, "本地插件功能模块已损坏", Toast.LENGTH_SHORT).show();
@@ -59,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void remotePlugin(View view){
+    public void remotePlugin(){
         //定义一个布尔值 用来控制接收app和模块之间的跳转流程
         boolean isStart = PluginHelper.startActivity(this,
                 PluginConstant.PLUGIN_ID_REMOTE,

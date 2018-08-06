@@ -13,6 +13,10 @@ public class BaseApp {
     private boolean IS_DEBUG = false;
 
 
+    int FINISH_ACTIVITY = 0x1024;
+    int CLICK_INTERVAL = 800;
+
+
     private static Class<? extends BaseApp> sClazz = BaseApp.class;
     private volatile static BaseApp sInstance;
 
@@ -51,8 +55,13 @@ public class BaseApp {
         return IS_DEBUG;
     }
 
+    public int getFinish_Act(){
+        return FINISH_ACTIVITY;
+    }
 
-
+    public int getCLICK_INTERVAL(){
+        return CLICK_INTERVAL;
+    }
 
 
 

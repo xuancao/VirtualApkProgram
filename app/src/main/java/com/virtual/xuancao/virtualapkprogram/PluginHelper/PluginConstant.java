@@ -1,4 +1,4 @@
-package com.virtual.xuancao.virtualapkprogram;
+package com.virtual.xuancao.virtualapkprogram.PluginHelper;
 
 /**
  * 插件信息常量设置

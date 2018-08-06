@@ -1,10 +1,9 @@
-package com.virtual.xuancao.virtualapkprogram.Helper;
+package com.virtual.xuancao.virtualapkprogram.PluginHelper;
 
 import android.content.Context;
 import android.content.Intent;
 
 import com.didi.virtualapk.PluginManager;
-import com.virtual.xuancao.virtualapkprogram.PluginConstant;
 import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
 import com.xuancao.base.Utils.LogUtil;
 
@@ -135,6 +134,33 @@ public class PluginHelper {
             try {
                 Intent intent = new Intent();
                 intent.setClassName(packageName, className);
+                context.startActivity(intent);
+            }catch (Exception e){
+                e.printStackTrace();
+                LogUtil.i(TAG, "startActivity" + "启动插件失败");
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 定义一个方法，用来控制平台和模块之间的跳转
+     * @param context 上下文环境
+     * @param pluginId 模块名称
+     * @param packageName 模块包名
+     * @param charSequence  传递参数
+     * @param className  模块页面名称
+     */
+    public static boolean startActivity(Context context, int pluginId, String packageName, CharSequence charSequence, String className){
+
+        if(isPluginLoaded(context,pluginId)){
+            //代表模块加载成功 页面可赢正常跳转功能
+
+            try {
+                Intent intent = new Intent();
+                intent.setClassName(packageName, className);
+                intent.putExtra("name",charSequence);
                 context.startActivity(intent);
             }catch (Exception e){
                 e.printStackTrace();

@@ -21,7 +21,7 @@ public class MyApp extends Application {
         BaseApp.getInstance().onCreate(this,this);
         BaseApp.getInstance().setDEBUG(IS_DEBUG);
 
-        /** 从服务器下载插件到指定目录 */
+//        /** 从服务器下载插件到指定目录 */
 //        if (NetWorkUtil.isWifi(this)) {
 //            DownPluginHelper.downPlugin(Func.DOWN_LOAD_PLUGIN_URL);
 //        }

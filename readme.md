@@ -1,6 +1,9 @@
 
 virtualapk对编译环境有很大的限制，我宿主项目和插件项目中使用的编译环境是：'com.android.tools.build:gradle:2.3.3'
 
+
+支持将插件存放到本地assets里面进行加载，也可从网络中下载插件进行加载（需在Func中修改apk存放服务器地址url）
+
 一、插件集成
 
 1、项目的build.gradle添加依赖
@@ -147,7 +150,5 @@ allprojects {
 
 
 
-commit：支持将插件存放到本地assets里面进行加载，也可从网络中下载插件进行加载
-commit：加入网络请求支持从服务器加载插件
 
 

@@ -1,6 +1,5 @@
-package com.virtual.xuancao.virtualapkprogram.Helper;
+package com.virtual.xuancao.virtualapkprogram.PluginHelper;
 
-import com.virtual.xuancao.virtualapkprogram.PluginConstant;
 import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
 import com.xuancao.base.Utils.LogUtil;
 import com.xuancao.base.Utils.ToastUtil;

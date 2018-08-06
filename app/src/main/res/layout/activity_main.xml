@@ -13,21 +13,20 @@
         android:layout_centerInParent="true"/>
 
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/btnNative"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="点击跳转本地插件中的activity"
         android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:onClick="nativePlugin"/>
+        android:layout_centerHorizontal="true"/>
 
     <Button
+        android:id="@+id/btnRemote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="点击跳转从远程下载的插件中的activity"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/btn1"
-        android:layout_centerHorizontal="true"
-        android:onClick="remotePlugin"/>
+        android:layout_below="@+id/btnNative"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
