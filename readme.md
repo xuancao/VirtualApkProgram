@@ -87,15 +87,25 @@ if (pluginManager.getLoadedPlugin(PackageName) != null){
 if(isPluginLoaded(activity,pluginId)){ //模块是否加载，pluginId为model中设置的插件id
 
     //代表模块加载成功 页面可赢正常跳转功能
+
     try {
+
         Intent intent = new Intent();
+
         intent.setClassName(packageName, className);
+
         activity.startActivity(intent);
+
     }catch (Exception e){
+
         e.printStackTrace();
+
         Log.e("sun", "startActivity: " +"启动插件失败");
+
     }
+
     return true;
+
 }
 
 
@@ -146,12 +156,19 @@ gradlew clean assemblePlugin
  * @return, 返回插件文件对象
  */
 public static File getPluginFile(Context context, int pluginId){
+
     //定义插件apk的名称
+
     String pluginApkName = getPluginName(pluginId);  //demo中做了简单封装，根据pluginId获model的包名
+
     //定义插件文件对象
+
     File file = new File(getExternalStorageDirectory(), pluginApkName);
+
     Log.e("sun", "getPluginFile: " +  file.getAbsolutePath());
+
     return file;
+
     }
 
 问题记录：
