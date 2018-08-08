@@ -32,9 +32,20 @@
         android:text="登录状态"
         android:layout_below="@+id/tv_main"/>
 
+    <TextView
+        android:id="@+id/tv_login_userInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/px20dp"
+        android:layout_marginRight="@dimen/px20dp"
+        android:text="用户信息"
+        android:layout_below="@+id/tv_login_status"/>
+
     <Button
         android:id="@+id/btnNative"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/px600dp"
         android:layout_height="wrap_content"
         android:text="点击跳转本地插件中的activity"
         android:layout_below="@+id/tv_title"
@@ -43,11 +54,22 @@
 
     <Button
         android:id="@+id/btnRemote"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/px600dp"
         android:layout_height="wrap_content"
         android:text="点击跳转从远程下载的插件中的activity"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/btnNative"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btnCrossProcess"
+        android:layout_width="@dimen/px600dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/px60dp"
+        android:layout_marginRight="@dimen/px60dp"
+        android:text="新打开的activity，查看经RemotePlugin插件修改后的用户信息"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/btnRemote"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

@@ -28,7 +28,7 @@ public class NativePage extends BaseActivity {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        setContentView(R.layout.page_native);
+        setContentView(R.layout.native_page_home);
         charSequence =  getIntent().getCharSequenceExtra("name");
     }
 

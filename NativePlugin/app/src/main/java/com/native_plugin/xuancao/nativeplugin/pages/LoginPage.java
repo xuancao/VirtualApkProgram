@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import com.native_plugin.xuancao.nativeplugin.BroadCast.Native_BrocastConfig;
 import com.native_plugin.xuancao.nativeplugin.R;
 import com.native_plugin.xuancao.nativeplugin.eventBus.EventBusHelper;
-import com.native_plugin.xuancao.nativeplugin.model.UserInfoModel;
+import com.virtual.xuancao.virtualapkprogram.model.UserInfoModel;
 import com.xuancao.base.BaseActivity;
 import com.xuancao.base.Utils.ToastUtil;
 
@@ -30,7 +30,7 @@ public class LoginPage extends BaseActivity {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        setContentView(R.layout.page_login);
+        setContentView(R.layout.native_page_login);
 
     }
 
@@ -96,6 +96,7 @@ public class LoginPage extends BaseActivity {
 
         Intent intent = new Intent(Native_BrocastConfig.LOGIN_SUCCESS_EVENT);
         intent.putExtra("loginStatus","已登录"+data.nick_name);
+        intent.putExtra("userInfo",data);
         sendBroadcast(intent);//发送标准广播
         finish();
     }

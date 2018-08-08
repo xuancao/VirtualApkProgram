@@ -16,6 +16,7 @@ import com.virtual.xuancao.virtualapkprogram.BroadCast.BrocastConfig;
 import com.virtual.xuancao.virtualapkprogram.PluginHelper.PluginConstant;
 import com.virtual.xuancao.virtualapkprogram.PluginHelper.PluginHelper;
 import com.virtual.xuancao.virtualapkprogram.R;
+import com.virtual.xuancao.virtualapkprogram.model.UserInfoModel;
 import com.xuancao.base.BaseActivity;
 import com.xuancao.base.Utils.PermissionUtils;
 
@@ -23,7 +24,8 @@ import com.xuancao.base.Utils.PermissionUtils;
 public class MainPage extends BaseActivity {
 
     private static final String TAG = "MainActivity";
-    private TextView tv_login_status;
+    private TextView tv_login_status,tv_login_userInfo;
+    private UserInfoModel userInfoModel;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -57,7 +59,9 @@ public class MainPage extends BaseActivity {
     public void initView() {
         findViewById(R.id.btnNative).setOnClickListener(this);
         findViewById(R.id.btnRemote).setOnClickListener(this);
+        findViewById(R.id.btnCrossProcess).setOnClickListener(this);
         tv_login_status = (TextView) findViewById(R.id.tv_login_status);
+        tv_login_userInfo = (TextView) findViewById(R.id.tv_login_userInfo);
     }
 
     @Override
@@ -74,6 +78,10 @@ public class MainPage extends BaseActivity {
             case R.id.btnNative:
                 nativePlugin();
                 break;
+            case R.id.btnCrossProcess:
+                Intent intent = new Intent(this,CrossProcessPage.class);
+                startActivity(intent);
+                break;
         }
 
     }
@@ -89,8 +97,13 @@ public class MainPage extends BaseActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             String loginStatus = intent.getStringExtra("loginStatus");
+            userInfoModel = (UserInfoModel) intent.getSerializableExtra("userInfo");
             if (action.equals(BrocastConfig.LOGIN_SUCCESS_EVENT)) { //登录广播
                 tv_login_status.setText(loginStatus!=null ? loginStatus : "未登录");
+                tv_login_userInfo.setText(userInfoModel!=null ? userInfoModel.toString() : "用户信息");
+                if (userInfoModel!=null){
+
+                }
             }else if (action.equals(BrocastConfig.LOGIN_OUT_EVENT)){
                 tv_login_status.setText("未登录！");
             }
@@ -110,7 +123,7 @@ public class MainPage extends BaseActivity {
         boolean isStart = PluginHelper.startActivity(this,
                 PluginConstant.PLUGIN_ID_NATIVE,
                 PluginConstant.PLUGIN_PACKAGE_NATIVE,
-                "登录模块",
+                "登录模块-NativePlugin",
                 "com.native_plugin.xuancao.nativeplugin.pages.NativePage");
         if (!isStart) {
             Toast.makeText(this, "本地插件功能模块已损坏", Toast.LENGTH_SHORT).show();

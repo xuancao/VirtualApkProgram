@@ -17,7 +17,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:padding="10dp"
-            android:src="@mipmap/back"
+            android:src="@mipmap/native_back"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/px10dp"/>
@@ -50,8 +50,7 @@
             <ImageView
                 android:layout_width="@dimen/px32dp"
                 android:layout_height="@dimen/px40dp"
-                android:src="@mipmap/phone_icon"
-                android:tag="tint_primary_color" />
+                android:src="@mipmap/native_phone_icon" />
 
             <com.native_plugin.xuancao.nativeplugin.widget.CustomDeleteEditText
                 android:id="@+id/editText_phone"
@@ -63,7 +62,7 @@
                 android:hint="@string/phone_num"
                 android:inputType="phone"
                 android:maxLength="11"
-                app:deleteIcon="@mipmap/delete_icon" />
+                app:deleteIcon="@mipmap/native_delete_icon" />
         </LinearLayout>
 
         <View
@@ -81,7 +80,7 @@
                 android:layout_width="@dimen/px30dp"
                 android:layout_height="@dimen/px42dp"
                 android:layout_weight="0"
-                android:src="@mipmap/password_icon"
+                android:src="@mipmap/native_password_icon"
                 android:tag="tint_primary_color" />
 
             <com.native_plugin.xuancao.nativeplugin.widget.CustomDeleteEditText
@@ -95,13 +94,13 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLength="15"
-                app:deleteIcon="@mipmap/delete_icon" />
+                app:deleteIcon="@mipmap/native_delete_icon" />
 
             <CheckBox
                 android:id="@+id/checkbox_pwd_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:button="@drawable/password_bg" />
+                android:button="@drawable/native_password_bg" />
         </LinearLayout>
 
         <View
@@ -118,8 +117,7 @@
         android:layout_marginLeft="@dimen/px60dp"
         android:layout_marginRight="@dimen/px60dp"
         android:layout_marginTop="@dimen/px74dp"
-        android:background="@drawable/btn_login_selector"
-        android:tag="bg_tint_primary_color_selector_lighter"
+        android:background="@drawable/native_btn_login_selector"
         android:text="登  录"
         android:textColor="@color/card_color"
         android:textSize="@dimen/px32dp" />

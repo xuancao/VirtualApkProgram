@@ -17,7 +17,7 @@ import com.google.gson.JsonObject;
 import com.native_plugin.xuancao.nativeplugin.Native_Func;
 import com.native_plugin.xuancao.nativeplugin.R;
 import com.native_plugin.xuancao.nativeplugin.eventBus.EventBusHelper;
-import com.native_plugin.xuancao.nativeplugin.model.UserInfoModel;
+import com.virtual.xuancao.virtualapkprogram.model.UserInfoModel;
 import com.native_plugin.xuancao.nativeplugin.utils.AppUtil;
 import com.xuancao.base.BaseActivity;
 import com.xuancao.base.Utils.LogUtil;
@@ -40,7 +40,7 @@ public class RegisterPage extends BaseActivity {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        setContentView(R.layout.page_register);
+        setContentView(R.layout.native_page_register);
     }
 
     @Override

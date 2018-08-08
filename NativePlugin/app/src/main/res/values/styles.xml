@@ -14,7 +14,7 @@
 
 
     <style name="edit_bg_style">
-        <item name="android:background">@drawable/edit_bg</item>
+        <item name="android:background">@drawable/native_edit_bg</item>
         <item name="android:layout_marginTop">@dimen/px0dp</item>
         <item name="android:layout_marginBottom">@dimen/px0dp</item>
         <item name="android:layout_marginLeft">10dp</item>
