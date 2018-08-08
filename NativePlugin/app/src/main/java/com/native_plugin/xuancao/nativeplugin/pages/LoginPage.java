@@ -12,17 +12,12 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.google.gson.JsonObject;
 import com.native_plugin.xuancao.nativeplugin.BroadCast.Native_BrocastConfig;
-import com.native_plugin.xuancao.nativeplugin.Native_Func;
 import com.native_plugin.xuancao.nativeplugin.R;
 import com.native_plugin.xuancao.nativeplugin.eventBus.EventBusHelper;
 import com.native_plugin.xuancao.nativeplugin.model.UserInfoModel;
 import com.xuancao.base.BaseActivity;
-import com.xuancao.base.Utils.LogUtil;
 import com.xuancao.base.Utils.ToastUtil;
-import com.xuancao.network.TypeModelHttpHandler;
-import com.xuancao.network.XuancaoHttpClient;
 
 public class LoginPage extends BaseActivity {
 
@@ -75,10 +70,6 @@ public class LoginPage extends BaseActivity {
     public void onClickEvent(View v) {
         switch (v.getId()) {
             case R.id.iv_back:
-                Intent intent = new Intent(Native_BrocastConfig.LOGIN_SUCCESS_EVENT);
-                intent.putExtra("loginStatus","已登录");
-                sendBroadcast(intent);//发送标准广播
-                EventBusHelper.loginSuccess(null);
                 finish();
                 break;
             case R.id.btn_login:
@@ -98,25 +89,15 @@ public class LoginPage extends BaseActivity {
     }
 
     public void login(String phone, String password) {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("mobile", phone);
-        jsonObject.addProperty("password", password);
-        XuancaoHttpClient.post(Native_Func.URL_USER_LOGIN, jsonObject, new TypeModelHttpHandler<UserInfoModel>() {
-            @Override
-            public void onSuccess(UserInfoModel data) {
-                ToastUtil.show("登录成功");
-                LogUtil.i(TAG, data.toString());
-//                UserHelper.setUserInfo(data.user_id, data.nick_name, data.avatar, data.api_token, data.birthday, data.gender, data.mobile);
-                EventBusHelper.loginSuccess(data);
+        UserInfoModel data = new UserInfoModel();
+        data.user_id = 11;
+        data.nick_name = "xuancao";
+        EventBusHelper.loginSuccess(data);
 
-            }
-
-            @Override
-            public void onFailure(int errorCode, String errorMsg) {
-                LogUtil.i(TAG, "errCode" + errorCode + "...errorMsg" + errorMsg);
-                ToastUtil.show(errorMsg);
-            }
-        });
+        Intent intent = new Intent(Native_BrocastConfig.LOGIN_SUCCESS_EVENT);
+        intent.putExtra("loginStatus","已登录"+data.nick_name);
+        sendBroadcast(intent);//发送标准广播
+        finish();
     }
 
     public static boolean isMobileNO(String mobiles) {

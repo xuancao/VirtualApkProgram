@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pages.NativePage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/global_color">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@mipmap/back"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/px10dp"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="@dimen/px88dp"
+            android:text="标题"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px32sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/native_tv_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="native page!"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/tv_login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/native_tv_page"
+        android:layout_centerHorizontal="true"
+        android:text="未登录"
+        android:layout_marginTop="@dimen/px10dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btn_go_register"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/px76dp"
+            android:layout_gravity="center"
+            android:background="@drawable/get_code_bg"
+            android:layout_marginRight="@dimen/px20dp"
+            android:padding="10dp"
+            android:text="注 册"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px24sp" />
+
+
+        <Button
+            android:id="@+id/btn_go_login"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/px76dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/px20dp"
+            android:background="@drawable/get_code_bg"
+            android:padding="10dp"
+            android:text="登 录"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px24sp" />
+        <Button
+            android:id="@+id/btn_go_login_out"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px76dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/px20dp"
+            android:background="@drawable/get_code_bg"
+            android:padding="10dp"
+            android:text="退出登录"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px24sp" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

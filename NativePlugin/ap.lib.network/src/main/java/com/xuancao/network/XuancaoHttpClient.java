@@ -78,9 +78,9 @@ public class XuancaoHttpClient {
         LogUtil.d(TAG, "RequestUrl:------>" + url);
         final FormBody requestParams = buildPostRequestParams(jsonObject);
         Request request = new Request.Builder().removeHeader(USER_AGENT)
+                // .addHeader("Connection", "close")
                 .addHeader(USER_AGENT, getUserAgent())
-                .addHeader("Authorization", "Bearer")
-                .addHeader("Accept", "application/x.zwdj.v1.0.0.json")
+//                .addHeader("api-token", UserHelper.getApiToken())
                 .post(requestParams).url(url).build();
         httpClient.newCall(request).enqueue(handler);
     }
