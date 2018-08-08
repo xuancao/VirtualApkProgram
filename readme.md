@@ -1,8 +1,15 @@
 
-virtualapk对编译环境有很大的限制，我宿主项目和插件项目中使用的编译环境是：'com.android.tools.build:gradle:2.3.3'
+virtualapk对编译环境有很大的限制，我宿主项目和插件项目中使用的编译环境是：'com.android.tools.build:gradle:2.3.3'（刚更新了，支持3.1.0）
 
 
 支持将插件存放到本地assets里面进行加载，也可从网络中下载插件进行加载（需在Func中修改apk存放服务器地址url）
+
+通信:本项目中单个进程中（单个app内部）用的是EventBus消息传递机制，
+     跨进程消息传递(多个app通信，eg:登录插件NativePlugin中登录后通知宿主和RemotePlugin插件修改登录状态)采用的是广播机制进行的消息传递，取数据采用ContentProvider方式
+     跨进程通信 可以采取Messenger，AIDL，ContentProvider，Socket的方式，根据个人喜好选择
+     didi/VirtualAPK Demo中的宿主向插件中取数据采用ContentProvider方式
+
+
 
 一、插件集成
 
@@ -136,9 +143,6 @@ virtualApk {
 
 gradle clean assemblePlugin
 
-或者
-
-gradlew clean assemblePlugin
 
 
 三、运行插件

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.xuancao.base.Utils.LogUtil;
@@ -12,20 +13,18 @@ import com.xuancao.base.Utils.LogUtil;
 /**
  * Desc:所有Activity的基类
  */
-public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     protected String TAG = getClass().getSimpleName();
     protected Context context;
 
     private long clickTime = 0;
     private int tempViewId;
 
-    private long updateTime = -1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
         super.onCreate(savedInstanceState);
-        updateTime = System.currentTimeMillis();
+        onActivityCreated(savedInstanceState);
         initView();
         initData();
         setListener();

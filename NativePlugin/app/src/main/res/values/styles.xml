@@ -1,11 +1,28 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!--自定义EditText-->
+    <declare-styleable name="CustomDeleteEditText">
+        <attr name="deleteIcon" format="integer" />
+    </declare-styleable>
 
+
+    <style name="edit_bg_style">
+        <item name="android:background">@drawable/edit_bg</item>
+        <item name="android:layout_marginTop">@dimen/px0dp</item>
+        <item name="android:layout_marginBottom">@dimen/px0dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:paddingBottom">@dimen/px20dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingTop">@dimen/px20dp</item>
+        <item name="android:textColor">@color/main_content_color</item>
+        <item name="android:textColorHint">@color/third_content_color</item>
+        <item name="android:textSize">@dimen/px28sp</item>
+    </style>
 </resources>

@@ -29,6 +29,7 @@ public class MyApp extends Application {
         AssetsFileUtils.assertCopyPlugin("plugin", FileUtils.getPluginCacheDir().getPath());
 
 
+
     }
 
     @Override

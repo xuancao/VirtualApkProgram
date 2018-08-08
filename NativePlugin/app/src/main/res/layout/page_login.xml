@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/global_color">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@mipmap/back"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/px10dp"/>
+
+        <TextView
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="@dimen/px88dp"
+            android:text="登录"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px32sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/px60dp"
+        android:layout_marginRight="@dimen/px64dp"
+        android:layout_marginTop="@dimen/px10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/px32dp"
+                android:layout_height="@dimen/px40dp"
+                android:src="@mipmap/phone_icon"
+                android:tag="tint_primary_color" />
+
+            <com.native_plugin.xuancao.nativeplugin.widget.CustomDeleteEditText
+                android:id="@+id/editText_phone"
+                style="@style/edit_bg_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100dp"
+                android:layout_marginLeft="@dimen/px32dp"
+                android:layout_marginRight="@dimen/px10dp"
+                android:hint="@string/phone_num"
+                android:inputType="phone"
+                android:maxLength="11"
+                app:deleteIcon="@mipmap/delete_icon" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_line"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/px30dp"
+                android:layout_height="@dimen/px42dp"
+                android:layout_weight="0"
+                android:src="@mipmap/password_icon"
+                android:tag="tint_primary_color" />
+
+            <com.native_plugin.xuancao.nativeplugin.widget.CustomDeleteEditText
+                android:id="@+id/editText_password"
+                style="@style/edit_bg_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100dp"
+                android:layout_marginLeft="@dimen/px32dp"
+                android:layout_marginRight="@dimen/px20dp"
+                android:layout_weight="1"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                app:deleteIcon="@mipmap/delete_icon" />
+
+            <CheckBox
+                android:id="@+id/checkbox_pwd_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/password_bg" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_line"></View>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px80dp"
+        android:layout_marginLeft="@dimen/px60dp"
+        android:layout_marginRight="@dimen/px60dp"
+        android:layout_marginTop="@dimen/px74dp"
+        android:background="@drawable/btn_login_selector"
+        android:tag="bg_tint_primary_color_selector_lighter"
+        android:text="登  录"
+        android:textColor="@color/card_color"
+        android:textSize="@dimen/px32dp" />
+
+
+</LinearLayout>

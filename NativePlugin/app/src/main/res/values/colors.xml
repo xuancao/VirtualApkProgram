@@ -3,4 +3,19 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <color name="main_background">#f5f5f5</color>
+
+    <color name="card_color">#ffffff</color><!--卡片颜色-->
+
+    <color name="global_color">#cc413a</color><!--主色调-->
+
+    <color name="divider_line">#cccccc</color>
+
+
+    <color name="main_content_color">#333333</color>
+
+    <color name="second_content_color">#666666</color>
+    <color name="third_content_color">#999999</color>
 </resources>
