@@ -2,7 +2,6 @@ package com.xuancao.base.Utils;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.annotation.IntDef;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -30,8 +29,6 @@ public class ToastUtil {
         }
     };
 
-    @IntDef({Toast.LENGTH_SHORT, Toast.LENGTH_LONG})
-    public @interface Duration {}
 
 
     /**
@@ -65,7 +62,7 @@ public class ToastUtil {
      * @param text 显示内容
      * @param duration 显示时间
      */
-    public static void show(String text, @Duration Integer duration){
+    public static void show(String text,Integer duration){
         final int myDuration = (duration==null)? Toast.LENGTH_SHORT:duration;
         if (mToast != null) {
             mToast.cancel();
@@ -92,7 +89,7 @@ public class ToastUtil {
      * @param duration 显示时间
      * @param view 图片View
      */
-    public static void showWithView(String text, @Duration Integer duration, View view){
+    public static void showWithView(String text, Integer duration, View view){
         final int myDuration = (duration==null)? Toast.LENGTH_SHORT:duration;
         if (mToast != null) {
             mToast.cancel();

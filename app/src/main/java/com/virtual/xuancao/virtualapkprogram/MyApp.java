@@ -8,6 +8,7 @@ import com.virtual.xuancao.virtualapkprogram.Utils.AssetsFileUtils;
 import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
 import com.xuancao.base.BaseApp;
 
+
 public class MyApp extends Application {
 
     private static Context mContext;
@@ -28,8 +29,6 @@ public class MyApp extends Application {
         /**  将assets中插件拷贝到指定目录 */
         AssetsFileUtils.assertCopyPlugin("plugin", FileUtils.getPluginCacheDir().getPath());
 
-
-
     }
 
     @Override
@@ -41,4 +40,5 @@ public class MyApp extends Application {
     public static Context getmContext() {
         return mContext;
     }
+
 }

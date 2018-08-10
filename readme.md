@@ -1,16 +1,6 @@
 
 virtualapk对编译环境有很大的限制，我宿主项目和插件项目中使用的编译环境是：'com.android.tools.build:gradle:2.3.3'（刚更新了，支持3.1.0）
 
-
-支持将插件存放到本地assets里面进行加载，也可从网络中下载插件进行加载（需在Func中修改apk存放服务器地址url）
-
-通信:本项目中单个进程中（单个app内部）用的是EventBus消息传递机制，
-     跨进程消息传递(多个app通信，eg:登录插件NativePlugin中登录后通知宿主和RemotePlugin插件修改登录状态)采用的是广播机制进行的消息传递，取数据采用ContentProvider方式
-     跨进程通信 可以采取Messenger，AIDL，ContentProvider，Socket的方式，根据个人喜好选择
-     didi/VirtualAPK Demo中的宿主向插件中取数据采用ContentProvider方式
-
-
-
 一、插件集成
 
 1、项目的build.gradle添加依赖
@@ -177,6 +167,21 @@ public static File getPluginFile(Context context, int pluginId){
 
     }
 
+本项目说明：
+
+支持将插件存放到本地assets里面进行加载，也可从网络中下载插件进行加载（需在Func中修改apk存放服务器地址url）
+
+通信:本项目中单个进程中（单个app内部）用的是EventBus消息传递机制，
+     跨进程消息传递(多个app通信，eg:登录插件NativePlugin中登录后通知宿主和RemotePlugin插件修改登录状态)采用的是广播机制进行的消息传递，取数据采用ContentProvider方式
+     跨进程通信 可以采取Messenger，AIDL，ContentProvider，Socket的方式，根据个人喜好选择
+     didi/VirtualAPK Demo中的宿主向插件中取数据采用ContentProvider方式
+
+    RemotePlugin插件中需要进行修改用户信息，但是用户信息要从宿主中得到(此处用跨进程通信。可以用aidl进行通信(所操作实体类还是都要定义相同的包名和类名，感觉多此一举，直接使用intent简单)，也可以直接用Intent传递，需要将所传的UserInfo类在宿主和插件中定义为相同包名和类名)
+
+
+
+
+
 问题记录：
 
 1、Error:This Gradle plugin requires Studio 3.0 minimum
@@ -213,7 +218,8 @@ allprojects {
 
 插件如果和宿主同事依赖了相同的包，打包时插件也不会携带该包，直接使用宿主的包文件。
 
-
+6.在AIDL文件中引用的Java类不会自动引入引用包名，需要在UserInfoManager.aidl中手动添加
+import com.virtual.xuancao.virtualapkprogram.model.UserInfoModel;
 
 
 

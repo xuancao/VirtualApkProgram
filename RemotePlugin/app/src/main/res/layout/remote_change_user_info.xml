@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_color">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/global_color">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@mipmap/remote_back"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/px10dp"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="@dimen/px88dp"
+            android:text="修改用户信息页"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px32sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/native_tv_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="展示修改后的用户信息!"
+        android:textColor="@color/second_content_color"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/tv_login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_title"
+        android:layout_centerHorizontal="true"
+        android:text="登录状态"
+        android:textColor="@color/second_content_color"
+        android:layout_marginTop="@dimen/px10dp"/>
+
+
+    <Button
+        android:id="@+id/btn_change_userInfo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px76dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:background="@color/global_color"
+        android:padding="10dp"
+        android:text="修改用户信息"
+        android:textColor="@color/card_color"
+        android:textSize="@dimen/px30sp" />
+
+
+
+</RelativeLayout>

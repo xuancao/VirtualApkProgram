@@ -16,6 +16,7 @@ public class FileUtils {
 
 
     private static String CACHE_DIR_NAME_PLUGIN = "plugin";//插件文件目录
+    private static String CACHE_DIR_NAME_OBJECTBOX = "objectbox";//数据库文件目录
 
 //    /**
 //     * 插件下载临时文件
@@ -38,6 +39,19 @@ public class FileUtils {
      */
     public static File getPluginCacheDir() {
         String fileDirPath = getCacheRootPath() + CACHE_DIR_NAME_PLUGIN + File.separator;
+        File fileDir = new File(fileDirPath);
+        if (!fileDir.exists()) {
+            fileDir.mkdirs();
+        }
+        LogUtil.i(TAG, "TempCachePath=" + fileDir.getPath());
+        return fileDir;
+    }
+
+    /**
+     * 获取/创建插件存储目录
+     */
+    public static File getObjectBoxCacheDir() {
+        String fileDirPath = getCacheRootPath() + CACHE_DIR_NAME_OBJECTBOX + File.separator;
         File fileDir = new File(fileDirPath);
         if (!fileDir.exists()) {
             fileDir.mkdirs();

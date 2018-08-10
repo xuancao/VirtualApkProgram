@@ -29,7 +29,7 @@ public class MainPage extends BaseActivity {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.host_main_page);
 
         if (PermissionUtils.hasPermission()) {
             Log.d(TAG,"loadPlugin");
@@ -59,7 +59,6 @@ public class MainPage extends BaseActivity {
     public void initView() {
         findViewById(R.id.btnNative).setOnClickListener(this);
         findViewById(R.id.btnRemote).setOnClickListener(this);
-        findViewById(R.id.btnCrossProcess).setOnClickListener(this);
         tv_login_status = (TextView) findViewById(R.id.tv_login_status);
         tv_login_userInfo = (TextView) findViewById(R.id.tv_login_userInfo);
     }
@@ -78,17 +77,14 @@ public class MainPage extends BaseActivity {
             case R.id.btnNative:
                 nativePlugin();
                 break;
-            case R.id.btnCrossProcess:
-                Intent intent = new Intent(this,CrossProcessPage.class);
-                startActivity(intent);
-                break;
         }
 
     }
 
     @Override
     public void initData() {
-        registerBoradcastReceiver();
+        registerLoginReceiver();
+        registerLoginOutReceiver();
     }
 
 
@@ -97,22 +93,28 @@ public class MainPage extends BaseActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             String loginStatus = intent.getStringExtra("loginStatus");
-            userInfoModel = (UserInfoModel) intent.getSerializableExtra("userInfo");
+            userInfoModel = (UserInfoModel) intent.getParcelableExtra("userInfo");
             if (action.equals(BrocastConfig.LOGIN_SUCCESS_EVENT)) { //登录广播
                 tv_login_status.setText(loginStatus!=null ? loginStatus : "未登录");
                 tv_login_userInfo.setText(userInfoModel!=null ? userInfoModel.toString() : "用户信息");
-                if (userInfoModel!=null){
 
-                }
             }else if (action.equals(BrocastConfig.LOGIN_OUT_EVENT)){
-                tv_login_status.setText("未登录！");
+                tv_login_status.setText(loginStatus!=null ? loginStatus : "未登录");
+                tv_login_userInfo.setText(userInfoModel!=null ? userInfoModel.toString() : "用户信息");
             }
         }
     };
 
-    public void registerBoradcastReceiver() {
+    public void registerLoginReceiver() {
         IntentFilter myIntentFilter = new IntentFilter();
         myIntentFilter.addAction(BrocastConfig.LOGIN_SUCCESS_EVENT);
+        //注册广播
+        context.registerReceiver(loginReceiver, myIntentFilter);
+    }
+
+    public void registerLoginOutReceiver() {
+        IntentFilter myIntentFilter = new IntentFilter();
+        myIntentFilter.addAction(BrocastConfig.LOGIN_OUT_EVENT);
         //注册广播
         context.registerReceiver(loginReceiver, myIntentFilter);
     }
@@ -136,7 +138,13 @@ public class MainPage extends BaseActivity {
         boolean isStart = PluginHelper.startActivity(this,
                 PluginConstant.PLUGIN_ID_REMOTE,
                 PluginConstant.PLUGIN_PACKAGE_REMOTE,
-                "com.remote_plugin.xuancao.remoteplugin.RemoteActivity");
+                "com.remote_plugin.xuancao.remoteplugin.RemoteHomePage");
+
+//        boolean isStart = PluginHelper.startActivity(this,
+//                PluginConstant.PLUGIN_ID_REMOTE,
+//                PluginConstant.PLUGIN_PACKAGE_REMOTE,
+//                userInfoModel,
+//                "com.remote_plugin.xuancao.remoteplugin.RemoteHomePage");
         if (!isStart) {
             Toast.makeText(this, "服务器下载的插件功能模块已损坏", Toast.LENGTH_SHORT).show();
         }
@@ -144,6 +152,7 @@ public class MainPage extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        unregisterReceiver(loginReceiver);
         super.onDestroy();
     }
 

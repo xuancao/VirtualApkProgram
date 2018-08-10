@@ -2,9 +2,11 @@ package com.virtual.xuancao.virtualapkprogram.PluginHelper;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.didi.virtualapk.PluginManager;
 import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
+import com.virtual.xuancao.virtualapkprogram.model.UserInfoModel;
 import com.xuancao.base.Utils.LogUtil;
 
 import java.io.File;
@@ -161,6 +163,27 @@ public class PluginHelper {
                 Intent intent = new Intent();
                 intent.setClassName(packageName, className);
                 intent.putExtra("name",charSequence);
+                context.startActivity(intent);
+            }catch (Exception e){
+                e.printStackTrace();
+                LogUtil.i(TAG, "startActivity" + "启动插件失败");
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean startActivity(Context context, int pluginId, String packageName, UserInfoModel object, String className){
+
+        if(isPluginLoaded(context,pluginId)){
+            //代表模块加载成功 页面可赢正常跳转功能
+
+            try {
+                Intent intent = new Intent();
+                intent.setClassName(packageName, className);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("userInfoBundle",object);
+                intent.putExtra("userInfo",bundle);
                 context.startActivity(intent);
             }catch (Exception e){
                 e.printStackTrace();

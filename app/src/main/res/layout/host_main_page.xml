@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="@dimen/px88dp"
-        android:text="标题"
+        android:text="宿主"
         android:textColor="@color/card_color"
         android:textSize="@dimen/px32sp"
         android:background="@color/global_color" />
@@ -59,17 +59,6 @@
         android:text="点击跳转从远程下载的插件中的activity"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/btnNative"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/btnCrossProcess"
-        android:layout_width="@dimen/px600dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/px60dp"
-        android:layout_marginRight="@dimen/px60dp"
-        android:text="新打开的activity，查看经RemotePlugin插件修改后的用户信息"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/btnRemote"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

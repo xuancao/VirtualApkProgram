@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.xuancao.base.Utils.LogUtil;
@@ -13,7 +11,7 @@ import com.xuancao.base.Utils.LogUtil;
 /**
  * Desc:所有Activity的基类
  */
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends Activity implements View.OnClickListener {
     protected String TAG = getClass().getSimpleName();
     protected Context context;
 

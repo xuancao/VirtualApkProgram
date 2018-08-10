@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/global_color">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@mipmap/host_back"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/px10dp"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="@dimen/px88dp"
+            android:text="宿主与RemotePlugin插件跨进程通信"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px32sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/host_tv_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="展示用户信息!"
+        android:layout_below="@+id/tv_login_status"
+        android:layout_marginTop="@dimen/px50dp"
+        android:layout_marginRight="@dimen/px20dp"
+        android:layout_marginLeft="@dimen/px20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tv_login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_title"
+        android:layout_centerHorizontal="true"
+        android:text="登录状态"
+        android:layout_marginTop="@dimen/px10dp"/>
+
+
+    <Button
+        android:id="@+id/btn_aidl"
+        android:layout_width="@dimen/px600dp"
+        android:layout_height="wrap_content"
+        android:text="AIDL跨进程通信，查看经RemotePlugin插件修改后的用户信息"
+        android:layout_marginTop="80dp"
+        android:layout_below="@+id/host_tv_page"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btn_messeger"
+        android:layout_width="@dimen/px600dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/px60dp"
+        android:layout_marginRight="@dimen/px60dp"
+        android:text="Messenger信使通信，查看经RemotePlugin插件修改后的用户信息"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/btn_aidl"
+        android:layout_centerHorizontal="true"/>
+
+
+
+
+</RelativeLayout>

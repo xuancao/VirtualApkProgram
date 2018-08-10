@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".page.CrossProcessPage"/>
+
 
 
     </application>
