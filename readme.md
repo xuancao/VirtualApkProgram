@@ -1,6 +1,8 @@
 
 virtualapk对编译环境有很大的限制，我宿主项目和插件项目中使用的编译环境是：'com.android.tools.build:gradle:3.1.0'（刚更新了，支持3.1.0）
+
 但是插件项目中编译环境还得依赖'com.android.tools.build:gradle:2.3.3'(使用3.1.0出现错误，所以插件和宿主暂时还是统一使用稳定的2.3.3)
+
 宿主和插件app---build.gradle中均已更新至最新为 'com.didi.virtualapk:core:0.9.7-dev'
 
 一、插件集成
