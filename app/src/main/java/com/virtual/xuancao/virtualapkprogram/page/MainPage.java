@@ -16,6 +16,8 @@ import com.virtual.xuancao.virtualapkprogram.BroadCast.BrocastConfig;
 import com.virtual.xuancao.virtualapkprogram.PluginHelper.PluginConstant;
 import com.virtual.xuancao.virtualapkprogram.PluginHelper.PluginHelper;
 import com.virtual.xuancao.virtualapkprogram.R;
+import com.virtual.xuancao.virtualapkprogram.db.DBEngine;
+import com.virtual.xuancao.virtualapkprogram.db.bean.UserInfoDB;
 import com.virtual.xuancao.virtualapkprogram.model.UserInfoModel;
 import com.xuancao.base.BaseActivity;
 import com.xuancao.base.Utils.PermissionUtils;
@@ -85,22 +87,42 @@ public class MainPage extends BaseActivity {
     public void initData() {
         registerLoginReceiver();
         registerLoginOutReceiver();
+        registerChangeInfoReceiver();
     }
 
 
-    private BroadcastReceiver loginReceiver = new BroadcastReceiver() {
+    // attention:::UserInfoModel(宿主和插件中类名和包名必须相同)只是为了说明NativePlugin插件和宿主可以通过intent结合广播传递，
+    // 实际项目开发中可以采用一套greendao共用缓存策略就行
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             String loginStatus = intent.getStringExtra("loginStatus");
             userInfoModel = (UserInfoModel) intent.getParcelableExtra("userInfo");
-            if (action.equals(BrocastConfig.LOGIN_SUCCESS_EVENT)) { //登录广播
-                tv_login_status.setText(loginStatus!=null ? loginStatus : "未登录");
-                tv_login_userInfo.setText(userInfoModel!=null ? userInfoModel.toString() : "用户信息");
-
-            }else if (action.equals(BrocastConfig.LOGIN_OUT_EVENT)){
-                tv_login_status.setText(loginStatus!=null ? loginStatus : "未登录");
-                tv_login_userInfo.setText(userInfoModel!=null ? userInfoModel.toString() : "用户信息");
+            switch (action){
+                case BrocastConfig.LOGIN_SUCCESS_EVENT: //登录广播
+                    tv_login_status.setText(loginStatus!=null ? loginStatus : "未登录");
+                    tv_login_userInfo.setText(userInfoModel!=null ? userInfoModel.toString() : "用户信息");
+                    if (userInfoModel!=null){
+                        UserInfoDB userInfoDB = new UserInfoDB();
+                        userInfoDB.setUser_id(userInfoModel.user_id+"");
+                        userInfoDB.setAvatar(userInfoModel.avatar);
+                        userInfoDB.setBirthday(userInfoModel.birthday);
+                        userInfoDB.setGender(userInfoModel.gender);
+                        userInfoDB.setMobile(userInfoModel.mobile);
+                        userInfoDB.setNick_name(userInfoModel.nick_name);
+                        DBEngine.getInstance().savePersonInfo(userInfoDB);
+                    }
+                    break;
+                case BrocastConfig.LOGIN_OUT_EVENT:
+                    tv_login_status.setText(loginStatus!=null ? loginStatus : "未登录");
+                    tv_login_userInfo.setText(userInfoModel!=null ? userInfoModel.toString() : "用户信息");
+                    DBEngine.getInstance().deletePersonInfo();
+                    break;
+                case BrocastConfig.CHANGE_USER_INFO:
+                    UserInfoDB userInfoModel = DBEngine.getInstance().getPersonInfo();
+                    tv_login_userInfo.setText(userInfoModel!=null ? userInfoModel.toString() : "用户信息");
+                    break;
             }
         }
     };
@@ -108,15 +130,19 @@ public class MainPage extends BaseActivity {
     public void registerLoginReceiver() {
         IntentFilter myIntentFilter = new IntentFilter();
         myIntentFilter.addAction(BrocastConfig.LOGIN_SUCCESS_EVENT);
-        //注册广播
-        context.registerReceiver(loginReceiver, myIntentFilter);
+        context.registerReceiver(broadcastReceiver, myIntentFilter);
     }
 
     public void registerLoginOutReceiver() {
         IntentFilter myIntentFilter = new IntentFilter();
         myIntentFilter.addAction(BrocastConfig.LOGIN_OUT_EVENT);
-        //注册广播
-        context.registerReceiver(loginReceiver, myIntentFilter);
+        context.registerReceiver(broadcastReceiver, myIntentFilter);
+    }
+
+    public void registerChangeInfoReceiver() {
+        IntentFilter myIntentFilter = new IntentFilter();
+        myIntentFilter.addAction(BrocastConfig.CHANGE_USER_INFO);
+        context.registerReceiver(broadcastReceiver, myIntentFilter);
     }
 
 
@@ -139,12 +165,6 @@ public class MainPage extends BaseActivity {
                 PluginConstant.PLUGIN_ID_REMOTE,
                 PluginConstant.PLUGIN_PACKAGE_REMOTE,
                 "com.remote_plugin.xuancao.remoteplugin.RemoteHomePage");
-
-//        boolean isStart = PluginHelper.startActivity(this,
-//                PluginConstant.PLUGIN_ID_REMOTE,
-//                PluginConstant.PLUGIN_PACKAGE_REMOTE,
-//                userInfoModel,
-//                "com.remote_plugin.xuancao.remoteplugin.RemoteHomePage");
         if (!isStart) {
             Toast.makeText(this, "服务器下载的插件功能模块已损坏", Toast.LENGTH_SHORT).show();
         }
@@ -152,7 +172,7 @@ public class MainPage extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        unregisterReceiver(loginReceiver);
+        unregisterReceiver(broadcastReceiver);
         super.onDestroy();
     }
 

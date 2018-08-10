@@ -6,6 +6,8 @@ import android.content.Context;
 import com.didi.virtualapk.PluginManager;
 import com.virtual.xuancao.virtualapkprogram.Utils.AssetsFileUtils;
 import com.virtual.xuancao.virtualapkprogram.Utils.FileUtils;
+import com.virtual.xuancao.virtualapkprogram.db.DBEngine;
+import com.virtual.xuancao.virtualapkprogram.db.THDatabaseLoader;
 import com.xuancao.base.BaseApp;
 
 
@@ -28,6 +30,10 @@ public class MyApp extends Application {
 //        }
         /**  将assets中插件拷贝到指定目录 */
         AssetsFileUtils.assertCopyPlugin("plugin", FileUtils.getPluginCacheDir().getPath());
+
+
+        THDatabaseLoader.getInstance().init(this);
+        DBEngine.getInstance().initializeDB();
 
     }
 

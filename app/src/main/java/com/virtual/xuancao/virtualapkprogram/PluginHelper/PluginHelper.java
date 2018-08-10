@@ -172,25 +172,4 @@ public class PluginHelper {
         }
         return false;
     }
-
-    public static boolean startActivity(Context context, int pluginId, String packageName, UserInfoModel object, String className){
-
-        if(isPluginLoaded(context,pluginId)){
-            //代表模块加载成功 页面可赢正常跳转功能
-
-            try {
-                Intent intent = new Intent();
-                intent.setClassName(packageName, className);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("userInfoBundle",object);
-                intent.putExtra("userInfo",bundle);
-                context.startActivity(intent);
-            }catch (Exception e){
-                e.printStackTrace();
-                LogUtil.i(TAG, "startActivity" + "启动插件失败");
-            }
-            return true;
-        }
-        return false;
-    }
 }

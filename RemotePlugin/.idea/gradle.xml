@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ap.lib.base" />
+            <option value="$PROJECT_DIR$/ap.lib.db" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

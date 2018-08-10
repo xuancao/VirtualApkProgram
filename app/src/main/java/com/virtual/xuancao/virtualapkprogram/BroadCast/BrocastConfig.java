@@ -1,6 +1,6 @@
 package com.virtual.xuancao.virtualapkprogram.BroadCast;
 
-public class BrocastConfig {
+public interface BrocastConfig {
 
     /**
      * 登录成功消息
@@ -10,5 +10,11 @@ public class BrocastConfig {
      * 退出登录
      */
     public static String LOGIN_OUT_EVENT = "login_out_event";
+
+
+    /**
+     * 修改用户信息
+     */
+    public static String CHANGE_USER_INFO = "change_user_info";
 
 }

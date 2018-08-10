@@ -32,7 +32,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/native_tv_page"
+        android:id="@+id/remote_tv_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="展示修改后的用户信息!"
