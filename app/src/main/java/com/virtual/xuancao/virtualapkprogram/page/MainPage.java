@@ -164,7 +164,7 @@ public class MainPage extends BaseActivity {
         boolean isStart = PluginHelper.startActivity(this,
                 PluginConstant.PLUGIN_ID_REMOTE,
                 PluginConstant.PLUGIN_PACKAGE_REMOTE,
-                "com.remote_plugin.xuancao.remoteplugin.RemoteHomePage");
+                "com.remote_plugin.xuancao.remoteplugin.page.RemoteHomePage");
         if (!isStart) {
             Toast.makeText(this, "服务器下载的插件功能模块已损坏", Toast.LENGTH_SHORT).show();
         }

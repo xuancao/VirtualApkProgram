@@ -1,12 +1,16 @@
 package com.remote_plugin.xuancao.remoteplugin.page;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.remote_plugin.xuancao.remoteplugin.BroadCast.Remote_BrocastConfig;
 import com.remote_plugin.xuancao.remoteplugin.R;
 import com.remote_plugin.xuancao.remoteplugin.db.DBEngine;
 import com.remote_plugin.xuancao.remoteplugin.db.bean.UserInfoDB;
@@ -55,10 +59,39 @@ public class RemoteHomePage extends BaseActivity {
 
     @Override
     public void initData() {
+        registerChangeInfoReceiver();
         userInfoDB = DBEngine.getInstance().getPersonInfo();
         if (userInfoDB!=null){
             remote_user_info.setText(userInfoDB.toString());
         }
+    }
+
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            switch (action){
+                case Remote_BrocastConfig.CHANGE_USER_INFO:
+                    UserInfoDB userInfoModel = DBEngine.getInstance().getPersonInfo();
+                    remote_user_info.setText(userInfoModel!=null ? userInfoModel.toString() : "展示修改后的用户信息");
+                    break;
+            }
+        }
+    };
+
+
+    public void registerChangeInfoReceiver() {
+        IntentFilter myIntentFilter = new IntentFilter();
+        myIntentFilter.addAction(Remote_BrocastConfig.CHANGE_USER_INFO);
+        context.registerReceiver(broadcastReceiver, myIntentFilter);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(broadcastReceiver);
+        super.onDestroy();
     }
 
 }

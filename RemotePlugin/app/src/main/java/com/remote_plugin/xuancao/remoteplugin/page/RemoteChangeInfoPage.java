@@ -63,7 +63,7 @@ public class RemoteChangeInfoPage extends BaseActivity {
     public void initData() {
         tv_login_status.setText(userInfoModel!=null ? "已登录"+userInfoModel.getNick_name() : "未登录");
         remote_tv_page.setText(userInfoModel!=null ? userInfoModel.toString():"用户信息");
-        registerChangeInfoReceiver();
+
     }
 
     private void changeUserInfo(){
@@ -73,33 +73,10 @@ public class RemoteChangeInfoPage extends BaseActivity {
         userInfoModel.setNick_name("caoxuan");
         DBEngine.getInstance().savePersonInfo(userInfoModel);
         sendBroadcast(new Intent(Remote_BrocastConfig.CHANGE_USER_INFO));//发送标准广播
-    }
 
-    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            switch (action){
-                case Remote_BrocastConfig.CHANGE_USER_INFO:
-                    UserInfoDB userInfoModel = DBEngine.getInstance().getPersonInfo();
-                    remote_tv_page.setText(userInfoModel!=null ? userInfoModel.toString() : "展示修改后的用户信息");
-                    break;
-            }
-        }
-    };
-
-
-    public void registerChangeInfoReceiver() {
-        IntentFilter myIntentFilter = new IntentFilter();
-        myIntentFilter.addAction(Remote_BrocastConfig.CHANGE_USER_INFO);
-        context.registerReceiver(broadcastReceiver, myIntentFilter);
+        remote_tv_page.setText(userInfoModel!=null ? userInfoModel.toString():"用户信息");
     }
 
 
-    @Override
-    protected void onDestroy() {
-        unregisterReceiver(broadcastReceiver);
-        super.onDestroy();
-    }
 
 }
