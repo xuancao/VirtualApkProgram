@@ -5,7 +5,7 @@ import java.io.File;
 
 public class DBManager {
     //TODO 路径需修改为自己的存放路径
-    protected static final String sDir = "/Users/xuancao/Documents/xuexi_Space/VirtualApkProgram/RemotePlugin/app/src/main/java";
+    protected static final String sDir = "/Users/lugang/Documents/xuexi_Space/VirtualApkProgram/RemotePlugin/app/src/main/java";
 //    protected static final String sDir = "./app/src/main/java-gen";
 
     public static void main(String[] args) throws Exception {

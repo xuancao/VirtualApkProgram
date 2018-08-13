@@ -19,6 +19,7 @@
         </activity>
 
         <activity android:name=".page.RemoteChangeInfoPage"/>
+        <activity android:name=".page.RemoteUpdatePhotoPage"/>
     </application>
 
 </manifest>

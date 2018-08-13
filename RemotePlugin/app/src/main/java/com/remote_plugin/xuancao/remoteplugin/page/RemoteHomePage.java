@@ -21,7 +21,7 @@ public class RemoteHomePage extends BaseActivity {
 
     private ImageView iv_back;
     private TextView remote_user_info;
-    private Button btn_go_change_userInfo;
+    private Button btn_go_change_userInfo,btn_quest_premission;
 
     private UserInfoDB userInfoDB;
 
@@ -35,12 +35,14 @@ public class RemoteHomePage extends BaseActivity {
         iv_back = (ImageView) findViewById(R.id.iv_back);
         remote_user_info = (TextView) findViewById(R.id.remote_user_info);
         btn_go_change_userInfo = (Button) findViewById(R.id.btn_go_change_userInfo);
+        btn_quest_premission = (Button) findViewById(R.id.btn_quest_premission);
     }
 
     @Override
     public void setListener() {
         iv_back.setOnClickListener(this);
         btn_go_change_userInfo.setOnClickListener(this);
+        btn_quest_premission.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +55,11 @@ public class RemoteHomePage extends BaseActivity {
                 Intent intent = new Intent(this,RemoteChangeInfoPage.class);
                 intent.putExtra("UserInfo",userInfoDB);
                 startActivity(intent);
+                break;
+            case R.id.btn_quest_premission:
+                Intent intent1 = new Intent(this,RemoteUpdatePhotoPage.class);
+                intent1.putExtra("UserInfo",userInfoDB);
+                startActivity(intent1);
                 break;
         }
     }

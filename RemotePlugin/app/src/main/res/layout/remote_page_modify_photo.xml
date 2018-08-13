@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_color"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivPhoto"
+        android:layout_width="@dimen/px220dp"
+        android:layout_height="@dimen/px220dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/ic_launcher_background"/>
+
+    <LinearLayout
+        android:id="@+id/llChoosePhotoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/llChoosePhoto"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/px10dp"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/second_content_color"
+            android:textSize="15sp"
+            android:background="#eeeeee"
+            android:drawableLeft="@mipmap/remote_ic_photo"
+            android:drawablePadding="@dimen/px10dp"
+            android:text="相册选择" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llTakePhotoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp">
+
+        <TextView
+            android:id="@+id/llTakePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="@dimen/px10dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/second_content_color"
+            android:textSize="15sp"
+            android:background="#eeeeee"
+            android:drawableLeft="@mipmap/remote_ic_camera"
+            android:drawablePadding="@dimen/px10dp"
+            android:text="选择拍照" />
+
+    </LinearLayout>
+</LinearLayout>

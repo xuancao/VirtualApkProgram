@@ -53,15 +53,40 @@
         android:layout_centerInParent="true"/>
 
 
-    <Button
-        android:id="@+id/btn_go_change_userInfo"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="@dimen/px88dp"
-        android:background="@color/global_color"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="跳转修改用户信息页"
-        android:textColor="@color/card_color"
-        android:textSize="@dimen/px32sp" />
+        android:background="@color/card_color"
+        android:padding="@dimen/px10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_go_change_userInfo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="@dimen/px88dp"
+            android:background="@color/global_color"
+            android:layout_marginRight="@dimen/px20dp"
+            android:text="修改用户信息页"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px32sp" />
+
+        <Button
+            android:id="@+id/btn_quest_premission"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="@dimen/px88dp"
+            android:layout_marginLeft="@dimen/px20dp"
+            android:background="@color/global_color"
+            android:text="修改用户图像"
+            android:textColor="@color/card_color"
+            android:textSize="@dimen/px32sp" />
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>
